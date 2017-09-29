@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Welcome View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SearchViewController" customModule="musearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,18 +27,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter artist or song to search:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gh-Qe-GeN">
-                                <rect key="frame" x="112.5" y="321" width="150" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Qsg-G0-ZZL"/>
-                                    <constraint firstAttribute="width" constant="150" id="ScF-rf-9xm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-Cz-eWI">
-                                <rect key="frame" x="20" y="366" width="335" height="36"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter artist or song to search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-Cz-eWI">
+                                <rect key="frame" x="20" y="110" width="335" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="jJ6-Eq-kvX"/>
                                 </constraints>
@@ -47,23 +37,33 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhv-qV-gJx">
-                                <rect key="frame" x="20" y="422" width="335" height="36"/>
+                                <rect key="frame" x="20" y="166" width="335" height="36"/>
                                 <color key="backgroundColor" red="1" green="0.62336335626547101" blue="0.82645636642477094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="LOOK IT UP!">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gl5-Op-bPL">
+                                <rect key="frame" x="0.0" y="222" width="375" height="445"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="q7T-tU-9Ge"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="nZm-6h-TBW"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.80423727581304139" green="1" blue="0.83582734628019772" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qhv-qV-gJx" firstAttribute="leading" secondItem="FzI-Cz-eWI" secondAttribute="leading" id="0gl-3K-Hey"/>
-                            <constraint firstItem="FzI-Cz-eWI" firstAttribute="top" secondItem="4gh-Qe-GeN" secondAttribute="bottom" id="9Dk-ff-YPi"/>
-                            <constraint firstItem="4gh-Qe-GeN" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="JrC-4n-ufr"/>
+                            <constraint firstItem="Gl5-Op-bPL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7yK-Xd-4ZH"/>
                             <constraint firstItem="UjR-2k-hmD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="McN-1p-cZ3"/>
                             <constraint firstItem="FzI-Cz-eWI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Mdd-2r-J4r"/>
-                            <constraint firstItem="4gh-Qe-GeN" firstAttribute="centerX" secondItem="FzI-Cz-eWI" secondAttribute="centerX" id="V65-qf-ftK"/>
+                            <constraint firstItem="FzI-Cz-eWI" firstAttribute="top" secondItem="UjR-2k-hmD" secondAttribute="bottom" constant="30" id="MwB-e7-URc"/>
+                            <constraint firstItem="Gl5-Op-bPL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="VY1-wg-bZg"/>
                             <constraint firstItem="qhv-qV-gJx" firstAttribute="trailing" secondItem="FzI-Cz-eWI" secondAttribute="trailing" id="W75-PR-Vd7"/>
+                            <constraint firstItem="Gl5-Op-bPL" firstAttribute="top" secondItem="qhv-qV-gJx" secondAttribute="bottom" constant="20" id="cgk-pH-Zbd"/>
+                            <constraint firstItem="Gl5-Op-bPL" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="n7n-C8-2l5"/>
                             <constraint firstItem="qhv-qV-gJx" firstAttribute="top" secondItem="FzI-Cz-eWI" secondAttribute="bottom" constant="20" id="oOV-EC-7iB"/>
                             <constraint firstItem="UjR-2k-hmD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="rB1-ed-Rbl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FzI-Cz-eWI" secondAttribute="trailing" constant="20" id="zpv-qd-Ms1"/>
@@ -73,6 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="669.60000000000002" y="32.833583208395808"/>
         </scene>
     </scenes>
 </document>
