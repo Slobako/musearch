@@ -22,7 +22,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        resultsTableView.register(UINib(nibName: "ResultsTableViewCell", bundle: nil), forCellReuseIdentifier: "resultsTableViewCell")
+        resultsTableView.isHidden = true
     }
     
     // MARK: - IBActions
@@ -33,6 +35,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.arrayOfResults = arrayOfResults
                 DispatchQueue.main.async(execute: {
                     self.resultsTableView.reloadData()
+                    self.resultsTableView.isHidden = false
                 })
             })
             
@@ -46,12 +49,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let searchResultCell: ResultsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "resultsTableViewCell", for: indexPath) as! ResultsTableViewCell
         if let song = arrayOfResults[indexPath.row]["song"] as? String {
-            print("Row No.\(indexPath.row): \(song)")
+            searchResultCell.songLabel.text = song
         }
-        
-        return cell
+        return searchResultCell
     }
     
     
