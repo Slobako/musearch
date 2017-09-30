@@ -10,9 +10,10 @@ import Foundation
 
 struct SearchService {
     
-    func searchArtistSong() {
-        
-        let urlString = "https://itunes.apple.com/search?term=tom+jones&resultentity=music"
+    func searchMusicFor(query: String) {
+
+        let stringToSend = query.replacingOccurrences(of: " ", with: "+")
+        let urlString = "https://itunes.apple.com/search?term=" + stringToSend + "&resultentity=music"
         let searchURL = NSURL.init(string: urlString)
         
         let task = URLSession.shared.dataTask(with: searchURL! as URL) { (data, URLResponse, error) in

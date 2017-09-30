@@ -27,7 +27,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - IBActions
     @IBAction func searchTapped(_ sender: Any) {
         
-        searchService.searchArtistSong()
+        if let typedText = searchTextField.text {
+            searchService.searchMusicFor(query: typedText)
+        }
     }
     
     
