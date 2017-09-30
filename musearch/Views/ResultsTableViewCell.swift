@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ResultsTableViewCell: UITableViewCell {
 
@@ -27,6 +28,11 @@ class ResultsTableViewCell: UITableViewCell {
             }
             if let album = searchResult?.album {
                 albumLabel.text = album
+            }
+            if let albumArtURLString = searchResult?.albumArtURL {
+                if let albumArtURL = URL(string: albumArtURLString) {
+                    albumArtImageView.sd_setImage(with: albumArtURL, placeholderImage: #imageLiteral(resourceName: "album_art_placeholder"))
+                }
             }
         }
     }
