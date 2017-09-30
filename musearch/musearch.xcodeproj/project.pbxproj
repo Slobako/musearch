@@ -14,6 +14,7 @@
 		450448601F7EF0B400D17722 /* musearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504485F1F7EF0B400D17722 /* musearchTests.swift */; };
 		4504486B1F7EF20200D17722 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504486A1F7EF20200D17722 /* SearchViewController.swift */; };
 		4504486E1F7F4FFF00D17722 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504486D1F7F4FFF00D17722 /* SearchService.swift */; };
+		450448711F7F8A3300D17722 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450448701F7F8A3300D17722 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		450448611F7EF0B400D17722 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4504486A1F7EF20200D17722 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4504486D1F7F4FFF00D17722 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		450448701F7F8A3300D17722 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		4504483E1F7EF0B300D17722 = {
 			isa = PBXGroup;
 			children = (
+				4504486F1F7F8A1A00D17722 /* Models */,
 				4504486C1F7F4FD900D17722 /* Services */,
 				450448491F7EF0B300D17722 /* musearch */,
 				4504485E1F7EF0B400D17722 /* musearchTests */,
@@ -105,6 +108,14 @@
 				4504486D1F7F4FFF00D17722 /* SearchService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		4504486F1F7F8A1A00D17722 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				450448701F7F8A3300D17722 /* SearchResult.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +223,7 @@
 			files = (
 				4504486E1F7F4FFF00D17722 /* SearchService.swift in Sources */,
 				4504486B1F7EF20200D17722 /* SearchViewController.swift in Sources */,
+				450448711F7F8A3300D17722 /* SearchResult.swift in Sources */,
 				4504484B1F7EF0B300D17722 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

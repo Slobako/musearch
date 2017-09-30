@@ -13,10 +13,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - IBOutlets
     @IBOutlet weak var searchTextField: UITextField!
-    
+    @IBOutlet weak var resultsTableView: UITableView!
     
     // MARK: - Properties
     lazy var searchService: SearchService = SearchService()
+    var arrayOfResults = [[String: String?]]()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -28,18 +29,28 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func searchTapped(_ sender: Any) {
         
         if let typedText = searchTextField.text {
-            searchService.searchMusicFor(query: typedText)
+            searchService.searchMusicFor(query: typedText, completion: { (arrayOfResults) in
+                self.arrayOfResults = arrayOfResults
+                DispatchQueue.main.async(execute: {
+                    self.resultsTableView.reloadData()
+                })
+            })
+            
         }
     }
     
     
     // MARK: - Table View Delegate & Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return arrayOfResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        if let song = arrayOfResults[indexPath.row]["song"] as? String {
+            print("Row No.\(indexPath.row): \(song)")
+        }
+        
         return cell
     }
     

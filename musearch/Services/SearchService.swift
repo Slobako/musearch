@@ -10,21 +10,43 @@ import Foundation
 
 struct SearchService {
     
-    func searchMusicFor(query: String) {
+    func searchMusicFor(query: String, completion: @escaping ([[String: String?]]) -> Void) {
 
         let stringToSend = query.replacingOccurrences(of: " ", with: "+")
         let urlString = "https://itunes.apple.com/search?term=" + stringToSend + "&resultentity=music"
         let searchURL = NSURL.init(string: urlString)
         
-        let task = URLSession.shared.dataTask(with: searchURL! as URL) { (data, URLResponse, error) in
+        let task = URLSession.shared.dataTask(with: searchURL! as URL) { (data, urlResponse, error) in
             
-            print("URLResponse is: \(String(describing: URLResponse))")
-            
-            do {
-                let responseDict = try JSONSerialization.jsonObject(with: data!, options: [])
-                print(responseDict)
-            } catch {
-                print(error)
+            if urlResponse != nil {
+                do {
+                    
+                    var arrayOfResults = [[String: String?]]()
+                    
+                    if let responseObject = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: AnyObject] {
+                        if let results = responseObject["results"] as? [[String: AnyObject]] {
+                            for dict in results {
+                                let artist = dict["artistName"] as? String
+                                let song = dict["trackName"] as? String
+                                let album = dict["collectionName"] as? String
+                                let albumArtURL = dict["artworkUrl100"] as? String
+                                
+                                let resultDict = ["artist": artist,
+                                                  "song": song,
+                                                  "album": album,
+                                                  "albumArtURL": albumArtURL]
+                                arrayOfResults.append(resultDict)
+                                
+//                                print("artist: \(artist!)\n",
+//                                        "song: \(song!)\n",
+//                                       "album: \(album!)\n")
+                            }
+                        }
+                    }
+                    completion(arrayOfResults)
+                } catch {
+                    print(error)
+                }
             }
         }
         
