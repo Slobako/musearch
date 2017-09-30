@@ -84,5 +84,20 @@
             </objects>
             <point key="canvasLocation" x="669.60000000000002" y="32.833583208395808"/>
         </scene>
+        <!--Lyrics View Controller-->
+        <scene sceneID="UeY-kP-csd">
+            <objects>
+                <viewController storyboardIdentifier="lyricsViewController" id="dME-X3-Z6K" customClass="LyricsViewController" customModule="musearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mtd-M6-m1W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="fU9-GC-Oqw"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0ev-ft-2AR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1606" y="33"/>
+        </scene>
     </scenes>
 </document>

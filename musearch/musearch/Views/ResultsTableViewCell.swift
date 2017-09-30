@@ -19,6 +19,8 @@ class ResultsTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     var searchResult: SearchResult? {
+        
+        // Set artist name, song, album and album civer image in the cell
         didSet {
             if let artist = searchResult?.artist {
                 artistLabel.text = artist

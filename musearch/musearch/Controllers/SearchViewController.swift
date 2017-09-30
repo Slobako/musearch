@@ -71,4 +71,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return searchResultCell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let lyricsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "lyricsViewController") as! LyricsViewController
+        
+        let navigationController = UINavigationController(rootViewController: lyricsVC)
+        lyricsVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal)) 
+        lyricsVC.navigationItem.title = "SONG LYRICS"
+        let selectedCell = tableView.cellForRow(at: indexPath) as! ResultsTableViewCell
+        
+        
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    @objc func dismissModal() {
+        dismiss(animated: true, completion: nil)
+    }
 }

@@ -17,6 +17,7 @@
 		450448711F7F8A3300D17722 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450448701F7F8A3300D17722 /* SearchResult.swift */; };
 		450448771F7F9BEB00D17722 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450448751F7F9BEB00D17722 /* ResultsTableViewCell.swift */; };
 		450448781F7F9BEB00D17722 /* ResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 450448761F7F9BEB00D17722 /* ResultsTableViewCell.xib */; };
+		4595F0921F80568D0093CDDC /* LyricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595F0911F80568D0093CDDC /* LyricsViewController.swift */; };
 		523541003C6976FB64AE1D54 /* Pods_musearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED52430E2BB65C27A51A60B /* Pods_musearch.framework */; };
 		F4F9C3463CA17ED97EAB146B /* Pods_musearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16537F880CF9E272F523503B /* Pods_musearchTests.framework */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		450448701F7F8A3300D17722 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		450448751F7F9BEB00D17722 /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
 		450448761F7F9BEB00D17722 /* ResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsTableViewCell.xib; sourceTree = "<group>"; };
+		4595F0911F80568D0093CDDC /* LyricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsViewController.swift; sourceTree = "<group>"; };
 		7EB6B80047C6ABFBE21A51FD /* Pods-musearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-musearchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-musearchTests/Pods-musearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		7ED52430E2BB65C27A51A60B /* Pods_musearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_musearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FEADA84C878E9EDEEA48DB1 /* Pods-musearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-musearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-musearch/Pods-musearch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,9 +79,6 @@
 		4504483E1F7EF0B300D17722 = {
 			isa = PBXGroup;
 			children = (
-				450448721F7F9A9700D17722 /* Views */,
-				4504486F1F7F8A1A00D17722 /* Models */,
-				4504486C1F7F4FD900D17722 /* Services */,
 				450448491F7EF0B300D17722 /* musearch */,
 				4504485E1F7EF0B400D17722 /* musearchTests */,
 				450448481F7EF0B300D17722 /* Products */,
@@ -101,10 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				4504484A1F7EF0B300D17722 /* AppDelegate.swift */,
-				4504486A1F7EF20200D17722 /* SearchViewController.swift */,
-				4504484E1F7EF0B300D17722 /* Main.storyboard */,
+				4504486F1F7F8A1A00D17722 /* Models */,
+				4504486C1F7F4FD900D17722 /* Services */,
+				450448721F7F9A9700D17722 /* Views */,
+				4595F08F1F8055760093CDDC /* Controllers */,
+				4595F0901F8055A40093CDDC /* Storyboards */,
 				450448511F7EF0B300D17722 /* Assets.xcassets */,
-				450448531F7EF0B300D17722 /* LaunchScreen.storyboard */,
 				450448561F7EF0B300D17722 /* Info.plist */,
 			);
 			path = musearch;
@@ -142,6 +143,24 @@
 				450448761F7F9BEB00D17722 /* ResultsTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4595F08F1F8055760093CDDC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4504486A1F7EF20200D17722 /* SearchViewController.swift */,
+				4595F0911F80568D0093CDDC /* LyricsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4595F0901F8055A40093CDDC /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4504484E1F7EF0B300D17722 /* Main.storyboard */,
+				450448531F7EF0B300D17722 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		542BE1D1B3E5679B842F998C /* Frameworks */ = {
@@ -367,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4595F0921F80568D0093CDDC /* LyricsViewController.swift in Sources */,
 				4504486E1F7F4FFF00D17722 /* SearchService.swift in Sources */,
 				4504486B1F7EF20200D17722 /* SearchViewController.swift in Sources */,
 				450448711F7F8A3300D17722 /* SearchResult.swift in Sources */,
