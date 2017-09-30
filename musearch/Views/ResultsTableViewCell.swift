@@ -16,6 +16,20 @@ class ResultsTableViewCell: UITableViewCell {
     @IBOutlet weak var albumLabel: UILabel!
     @IBOutlet weak var albumArtImageView: UIImageView!
     
+    // MARK: - Properties
+    var searchResult: SearchResult? {
+        didSet {
+            if let artist = searchResult?.artist {
+                artistLabel.text = artist
+            }
+            if let song = searchResult?.song {
+                songLabel.text = song
+            }
+            if let album = searchResult?.album {
+                albumLabel.text = album
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

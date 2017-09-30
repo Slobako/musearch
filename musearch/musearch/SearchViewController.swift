@@ -17,7 +17,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - Properties
     lazy var searchService: SearchService = SearchService()
-    var arrayOfResults = [[String: String?]]()
+    var arrayOfResults = [SearchResult?]()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -65,12 +65,10 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let searchResultCell: ResultsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "resultsTableViewCell", for: indexPath) as! ResultsTableViewCell
-        if let song = arrayOfResults[indexPath.row]["song"] as? String {
-            searchResultCell.songLabel.text = song
+        if let searchResult = arrayOfResults[indexPath.row] {
+            searchResultCell.searchResult = searchResult
         }
         return searchResultCell
     }
-    
-    
     
 }

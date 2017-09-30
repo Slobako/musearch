@@ -10,9 +10,10 @@ import Foundation
 
 struct SearchService {
     
-    func searchMusicFor(query: String, completion: @escaping ([[String: String?]]) -> Void) {
+    func searchMusicFor(query: String, completion: @escaping ([SearchResult]) -> Void) {
 
-        let stringToSend = query.replacingOccurrences(of: " ", with: "+")
+        let stringWithoutQuote = query.replacingOccurrences(of: "’", with: "") // !this is not a regular ' from keyboard!
+        let stringToSend = stringWithoutQuote.replacingOccurrences(of: " ", with: "+")
         let urlString = "https://itunes.apple.com/search?term=" + stringToSend + "&resultentity=music"
         let searchURL = NSURL.init(string: urlString)
         
@@ -20,32 +21,29 @@ struct SearchService {
             
             if urlResponse != nil {
                 do {
-                    
-                    var arrayOfResults = [[String: String?]]()
+                    var arrayOfResults = [SearchResult]()
                     
                     if let responseObject = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: AnyObject] {
                         if let results = responseObject["results"] as? [[String: AnyObject]] {
                             for dict in results {
-                                let artist = dict["artistName"] as? String
-                                let song = dict["trackName"] as? String
-                                let album = dict["collectionName"] as? String
-                                let albumArtURL = dict["artworkUrl100"] as? String
-                                
-                                let resultDict = ["artist": artist,
-                                                  "song": song,
-                                                  "album": album,
-                                                  "albumArtURL": albumArtURL]
-                                arrayOfResults.append(resultDict)
-                                
-//                                print("artist: \(artist!)\n",
-//                                        "song: \(song!)\n",
-//                                       "album: \(album!)\n")
+//                                let artist = dict["artistName"] as? String
+//                                let song = dict["trackName"] as? String
+//                                let album = dict["collectionName"] as? String
+//                                let albumArtURL = dict["artworkUrl100"] as? String
+//
+//                                let resultDict = ["artist": artist,
+//                                                  "song": song,
+//                                                  "album": album,
+//                                                  "albumArtURL": albumArtURL]
+                                if let resultDict = SearchResult(json: dict) {
+                                    arrayOfResults.append(resultDict)
+                                }
                             }
                         }
                     }
                     completion(arrayOfResults)
                 } catch {
-                    print(error)
+                    print("Error occured: \(error)")
                 }
             }
         }
