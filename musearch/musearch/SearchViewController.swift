@@ -48,6 +48,21 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return arrayOfResults.count
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
+        let separator = UIView(frame: CGRect(x: 0, y: 29, width: view.frame.size.width, height: 1))
+        separator.backgroundColor = UIColor.black
+        header.addSubview(separator)
+        header.backgroundColor = UIColor.init(red: 0.8039, green: 1.0, blue: 0.8353, alpha: 1)
+        let titleLabel = UILabel(frame: CGRect(x: 20, y: 2, width: 180, height: 25))
+        header.addSubview(titleLabel)
+        titleLabel.text = "Search Results:"
+        titleLabel.textColor = UIColor.black
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        return header
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let searchResultCell: ResultsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "resultsTableViewCell", for: indexPath) as! ResultsTableViewCell
         if let song = arrayOfResults[indexPath.row]["song"] as? String {

@@ -61,6 +61,7 @@
                         </constraints>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" red="0.80423727580000004" green="1" blue="0.8358273463" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="a5K-Rw-F4I" secondAttribute="bottom" constant="5" id="Q0J-83-jYk"/>
                     <constraint firstAttribute="trailing" secondItem="a5K-Rw-F4I" secondAttribute="trailing" constant="8" id="eH6-e0-51h"/>
