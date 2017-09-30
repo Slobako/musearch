@@ -26,15 +26,6 @@ struct SearchService {
                     if let responseObject = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: AnyObject] {
                         if let results = responseObject["results"] as? [[String: AnyObject]] {
                             for dict in results {
-//                                let artist = dict["artistName"] as? String
-//                                let song = dict["trackName"] as? String
-//                                let album = dict["collectionName"] as? String
-//                                let albumArtURL = dict["artworkUrl100"] as? String
-//
-//                                let resultDict = ["artist": artist,
-//                                                  "song": song,
-//                                                  "album": album,
-//                                                  "albumArtURL": albumArtURL]
                                 if let resultDict = SearchResult(json: dict) {
                                     arrayOfResults.append(resultDict)
                                 }
@@ -51,6 +42,11 @@ struct SearchService {
         task.resume()
     }
     
+    // Bypassing ATS protection (for servers with self signed certificate) - would need to change struct to class and make it conform to URLSessionDelegate; seems unnecessary for this case
+    // For now, just placed the ATS bypass in Info.plist
+//    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
+//    }
     
     func searchLyrics() {
         
