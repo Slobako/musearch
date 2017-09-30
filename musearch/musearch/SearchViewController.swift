@@ -11,10 +11,24 @@ import Foundation
 
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    // MARK: - IBOutlets
+    @IBOutlet weak var searchTextField: UITextField!
+    
+    
+    // MARK: - Properties
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    // MARK: - IBActions
+    @IBAction func searchTapped(_ sender: Any) {
+        
+        
+    }
+    
     
     // MARK: - Table View Delegate & Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,6 +39,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = UITableViewCell()
         return cell
     }
+    
     
     
 }
