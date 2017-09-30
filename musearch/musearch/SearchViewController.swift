@@ -16,6 +16,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     // MARK: - Properties
+    lazy var searchService: SearchService = SearchService()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -26,7 +27,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - IBActions
     @IBAction func searchTapped(_ sender: Any) {
         
-        
+        searchService.searchArtistSong()
     }
     
     

@@ -12,6 +12,22 @@ struct SearchService {
     
     func searchArtistSong() {
         
+        let urlString = "https://itunes.apple.com/search?term=tom+jones&resultentity=music"
+        let searchURL = NSURL.init(string: urlString)
+        
+        let task = URLSession.shared.dataTask(with: searchURL! as URL) { (data, URLResponse, error) in
+            
+            print("URLResponse is: \(String(describing: URLResponse))")
+            
+            do {
+                let responseDict = try JSONSerialization.jsonObject(with: data!, options: [])
+                print(responseDict)
+            } catch {
+                print(error)
+            }
+        }
+        
+        task.resume()
     }
     
     
