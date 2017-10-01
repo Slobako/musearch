@@ -78,7 +78,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         lyricsVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal)) 
         lyricsVC.navigationItem.title = "SONG LYRICS"
         let selectedCell = tableView.cellForRow(at: indexPath) as! ResultsTableViewCell
-        
+        lyricsVC.selectedResult = selectedCell.searchResult
         
         present(navigationController, animated: true, completion: nil)
     }
