@@ -50,6 +50,7 @@
 		450448751F7F9BEB00D17722 /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
 		450448761F7F9BEB00D17722 /* ResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsTableViewCell.xib; sourceTree = "<group>"; };
 		4595F0911F80568D0093CDDC /* LyricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsViewController.swift; sourceTree = "<group>"; };
+		45BA26D41F80E483000696A6 /* musearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "musearch-Bridging-Header.h"; sourceTree = "<group>"; };
 		7EB6B80047C6ABFBE21A51FD /* Pods-musearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-musearchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-musearchTests/Pods-musearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		7ED52430E2BB65C27A51A60B /* Pods_musearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_musearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FEADA84C878E9EDEEA48DB1 /* Pods-musearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-musearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-musearch/Pods-musearch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		4504483E1F7EF0B300D17722 = {
 			isa = PBXGroup;
 			children = (
+				45BA26D41F80E483000696A6 /* musearch-Bridging-Header.h */,
 				450448491F7EF0B300D17722 /* musearch */,
 				4504485E1F7EF0B400D17722 /* musearchTests */,
 				450448481F7EF0B300D17722 /* Products */,

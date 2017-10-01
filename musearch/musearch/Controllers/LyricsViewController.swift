@@ -18,11 +18,14 @@ class LyricsViewController: UIViewController {
     
     // MARK: - Properties
     var selectedResult: SearchResult?
+    lazy var searchService: SearchService = SearchService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setViewValues()
+        searchService.searchLyrics()
+        
     }
 
     // Sets artist name, song, album and album cover image
