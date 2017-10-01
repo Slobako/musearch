@@ -25,29 +25,33 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         resultsTableView.register(UINib(nibName: "ResultsTableViewCell", bundle: nil), forCellReuseIdentifier: "resultsTableViewCell")
         resultsTableView.isHidden = true
+        // Hide empty rows
+        resultsTableView.tableFooterView = UIView(frame: .zero)
     }
     
     // MARK: - IBActions
     @IBAction func searchTapped(_ sender: Any) {
         
         if let typedText = searchTextField.text {
-            searchService.searchMusicFor(query: typedText, completion: { (arrayOfResults) in
+            searchService.searchMusicFor(query: typedText, completion: { [unowned self] (arrayOfResults) in
                 self.arrayOfResults = arrayOfResults
+                // Reload table view on the main thread
                 DispatchQueue.main.async(execute: {
                     self.resultsTableView.reloadData()
+                    let indexPath = IndexPath(row: 0, section: 0)
+                    self.resultsTableView.scrollToRow(at: indexPath, at: .top, animated: false)
                     self.resultsTableView.isHidden = false
                 })
             })
-            
         }
     }
-    
     
     // MARK: - Table View Delegate & Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfResults.count
     }
     
+    // Creates table view header with title for search results
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 30))
         let separator = UIView(frame: CGRect(x: 0, y: 29, width: view.frame.size.width, height: 1))
@@ -72,14 +76,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let lyricsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "lyricsViewController") as! LyricsViewController
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // Instantiate lyrics view controller with navigation bar
+        let lyricsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "lyricsViewController") as! LyricsViewController
         let navigationController = UINavigationController(rootViewController: lyricsVC)
-        lyricsVC.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissModal)) 
+        lyricsVC.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissModal))
         lyricsVC.navigationItem.title = "SONG LYRICS"
+        
+        // Pass data from tapped cell and present new view controller modally
         let selectedCell = tableView.cellForRow(at: indexPath) as! ResultsTableViewCell
         lyricsVC.selectedResult = selectedCell.searchResult
-        
         present(navigationController, animated: true, completion: nil)
     }
     

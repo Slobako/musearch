@@ -44,8 +44,12 @@ struct SearchService {
                         }
                     }
                     completion(arrayOfResults)
-                } catch {
+                } catch let error {
                     print("Error occured: \(error)")
+                }
+            } else {
+                if let error = error {
+                    print(error.localizedDescription)
                 }
             }
         }
@@ -53,29 +57,33 @@ struct SearchService {
         task.resume()
     }
     
-    // Bypassing ATS (App Transport Security) (for servers with self signed certificate) - would
-    // need to change struct to class and make it conform to URLSessionDelegate; seems unnecessary for this case.
-    // For now, just placed the ATS bypass in Info.plist.
-//    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-//        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
-//    }
-    
+    /// Retrieve lyrics for the selected song from Musixmatch API
+    ///
+    /// - Parameters: song: String, artist: String
+    ///
+    /// - Returns a lyrics string in a completion block
     func searchLyricsFor(song: String, artist: String, completion: @escaping (String?) -> Void) {
         
         let apiConfig = SWGConfiguration.sharedConfig()
+        // Set API key
         apiConfig?.setApiKey("0714dcd584656e0c4d665c7fa8bb81a6", forApiKeyIdentifier: "apikey")
         let format = "json"
-        var lyrics = ""
+        // create instance of desired API and perform the request
         let apiInstance = SWGLyricsApi()
         apiInstance.matcherLyricsGetGet(withFormat: format, callback: nil, qTrack: song, qArtist: artist) { (output, error) in
+            // output is of type SWGInlineResponse2007
             if let output = output {
                 print("OUTPUT IS: \(output)")
+                // If request has been successful, pass the lyrics back to the view controller
                 if output.message.header.statusCode == 200 {
-                    if let lyrics = output.message.body.lyrics.lyricsBody {
-                        completion(lyrics)
+                    if let lyrics = output.message.body.lyrics.lyricsBody,
+                        let copyright = output.message.body.lyrics.lyricsCopyright {
+                        completion("\(lyrics)\n\n\(copyright)")
                     }
+                    // If not, send error message to display for the user
                 } else {
                     let statusCode = output.message.header.statusCode.intValue
+                    var lyrics = ""
                     switch statusCode {
                     case 402:
                         lyrics = "The usage limit has been reached. You either exceeded per day requests limit or your balance is insufficient."
@@ -89,8 +97,9 @@ struct SearchService {
                     completion(lyrics)
                 }
             } else {
-                print("ERROR is: \(error as Any)")
+                print("ERROR is: \(String(describing: error?.localizedDescription))")
             }
         }
     }
+    
 }

@@ -25,6 +25,8 @@ class LyricsViewController: UIViewController {
         super.viewDidLoad()
 
         setViewValues()
+        
+        // Performs lyrics search for chosen song and displays it in the text view
         searchService.searchLyricsFor(song: songLabel.text!, artist: artistLabel.text!) { (lyrics) in
             guard let lyrics = lyrics else { return }
             if lyrics != "" {
