@@ -15,6 +15,7 @@ class LyricsViewController: UIViewController {
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var albumLabel: UILabel!
+    @IBOutlet weak var lyricsTextView: UITextView!
     
     // MARK: - Properties
     var selectedResult: SearchResult?
@@ -24,7 +25,14 @@ class LyricsViewController: UIViewController {
         super.viewDidLoad()
 
         setViewValues()
-        searchService.searchLyrics()
+        searchService.searchLyricsFor(song: songLabel.text!, artist: artistLabel.text!) { (lyrics) in
+            guard let lyrics = lyrics else { return }
+            if lyrics != "" {
+                self.lyricsTextView.text = lyrics
+            } else {
+                self.lyricsTextView.text = "LYRICS NOT FOUND"
+            }
+        }
         
     }
 

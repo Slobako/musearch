@@ -33,7 +33,7 @@ struct SearchService {
                 do {
                     var arrayOfResults = [SearchResult]()
                     // Parse JSON (response object)
-                    if let responseObject = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: AnyObject] {
+                    if let responseObject = try JSONSerialization.jsonObject(with: data!) as? [String: AnyObject] {
                         if let results = responseObject["results"] as? [[String: AnyObject]] {
                             for dict in results {
                                 // Build array of dictionaries with single search results
@@ -60,21 +60,37 @@ struct SearchService {
 //        completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
 //    }
     
-    func searchLyrics() {
+    func searchLyricsFor(song: String, artist: String, completion: @escaping (String?) -> Void) {
         
         let apiConfig = SWGConfiguration.sharedConfig()
         apiConfig?.setApiKey("0714dcd584656e0c4d665c7fa8bb81a6", forApiKeyIdentifier: "apikey")
-        let song = "Like a prayer"
-        let artist = "Madonna"
         let format = "json"
+        var lyrics = ""
         let apiInstance = SWGLyricsApi()
         apiInstance.matcherLyricsGetGet(withFormat: format, callback: nil, qTrack: song, qArtist: artist) { (output, error) in
             if let output = output {
                 print("OUTPUT IS: \(output)")
+                if output.message.header.statusCode == 200 {
+                    if let lyrics = output.message.body.lyrics.lyricsBody {
+                        completion(lyrics)
+                    }
+                } else {
+                    let statusCode = output.message.header.statusCode.intValue
+                    switch statusCode {
+                    case 402:
+                        lyrics = "The usage limit has been reached. You either exceeded per day requests limit or your balance is insufficient."
+                    case 404:
+                        lyrics = "LYRICS NOT FOUND"
+                    case 503:
+                        lyrics = "Our system is a bit busy at the moment and your request cannot be fulfilled. Please try again later."
+                    default:
+                        lyrics = "Oops, something went wrong"
+                    }
+                    completion(lyrics)
+                }
             } else {
-                print("ERRORRR is: \(error as Any)")
+                print("ERROR is: \(error as Any)")
             }
-            
         }
     }
 }

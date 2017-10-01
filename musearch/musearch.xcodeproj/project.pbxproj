@@ -18,6 +18,7 @@
 		450448771F7F9BEB00D17722 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 450448751F7F9BEB00D17722 /* ResultsTableViewCell.swift */; };
 		450448781F7F9BEB00D17722 /* ResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 450448761F7F9BEB00D17722 /* ResultsTableViewCell.xib */; };
 		4595F0921F80568D0093CDDC /* LyricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4595F0911F80568D0093CDDC /* LyricsViewController.swift */; };
+		45E831BE1F80F35500A44382 /* SwaggerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E831BF1F80F35500A44382 /* SwaggerClient.framework */; };
 		523541003C6976FB64AE1D54 /* Pods_musearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED52430E2BB65C27A51A60B /* Pods_musearch.framework */; };
 		F4F9C3463CA17ED97EAB146B /* Pods_musearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16537F880CF9E272F523503B /* Pods_musearchTests.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		450448761F7F9BEB00D17722 /* ResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsTableViewCell.xib; sourceTree = "<group>"; };
 		4595F0911F80568D0093CDDC /* LyricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsViewController.swift; sourceTree = "<group>"; };
 		45BA26D41F80E483000696A6 /* musearch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "musearch-Bridging-Header.h"; sourceTree = "<group>"; };
+		45E831BF1F80F35500A44382 /* SwaggerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwaggerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB6B80047C6ABFBE21A51FD /* Pods-musearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-musearchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-musearchTests/Pods-musearchTests.release.xcconfig"; sourceTree = "<group>"; };
 		7ED52430E2BB65C27A51A60B /* Pods_musearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_musearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FEADA84C878E9EDEEA48DB1 /* Pods-musearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-musearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-musearch/Pods-musearch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45E831BE1F80F35500A44382 /* SwaggerClient.framework in Frameworks */,
 				523541003C6976FB64AE1D54 /* Pods_musearch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +171,7 @@
 		542BE1D1B3E5679B842F998C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				45E831BF1F80F35500A44382 /* SwaggerClient.framework */,
 				7ED52430E2BB65C27A51A60B /* Pods_musearch.framework */,
 				16537F880CF9E272F523503B /* Pods_musearchTests.framework */,
 			);
