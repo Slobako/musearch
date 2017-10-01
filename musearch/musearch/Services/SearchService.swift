@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwaggerClient
 
 struct SearchService {
     
@@ -61,5 +62,19 @@ struct SearchService {
     
     func searchLyrics() {
         
+        let apiConfig = SWGConfiguration.sharedConfig()
+        apiConfig?.setApiKey("0714dcd584656e0c4d665c7fa8bb81a6", forApiKeyIdentifier: "apikey")
+        let song = "Like a prayer"
+        let artist = "Madonna"
+        let format = "json"
+        let apiInstance = SWGLyricsApi()
+        apiInstance.matcherLyricsGetGet(withFormat: format, callback: nil, qTrack: song, qArtist: artist) { (output, error) in
+            if let output = output {
+                print("OUTPUT IS: \(output)")
+            } else {
+                print("ERRORRR is: \(error as Any)")
+            }
+            
+        }
     }
 }

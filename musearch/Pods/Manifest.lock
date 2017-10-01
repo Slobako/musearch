@@ -1,14 +1,44 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - ISO8601 (0.6.0)
+  - JSONModel (1.7.0)
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
+  - SwaggerClient (1.0.0):
+    - AFNetworking (~> 3)
+    - ISO8601 (~> 0.5)
+    - JSONModel (~> 1.2)
 
 DEPENDENCIES:
   - SDWebImage
+  - SwaggerClient (from `Musixmatch/`)
+
+EXTERNAL SOURCES:
+  SwaggerClient:
+    :path: Musixmatch/
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  ISO8601: d3ea3ba9b752820cf92c6b47a9ee327e9f0e13fc
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SwaggerClient: f2e9153094a280bb90347ac6bd8ff2068b3a4754
 
-PODFILE CHECKSUM: 1be962aaf9043a04257b89ca77e03bf6befdfcca
+PODFILE CHECKSUM: 0b4442b36a293dfcd3773321b7c33c229d3658d2
 
 COCOAPODS: 1.2.1

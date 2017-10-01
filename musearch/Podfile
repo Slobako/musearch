@@ -7,6 +7,7 @@ target 'musearch' do
 
   # Pods for musearch
   pod "SDWebImage"
+  pod 'SwaggerClient', :path => 'Musixmatch/'
 
   target 'musearchTests' do
     inherit! :search_paths
