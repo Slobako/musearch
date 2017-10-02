@@ -24,6 +24,14 @@ class SearchViewControllerTests: XCTestCase {
         super.tearDown()
     }
     
+    func test_tableViewNotNilAfterViewDidLoad() {
+        let storyboard = UIStoryboard(name:"Main", bundle: nil)
+        let sut = storyboard.instantiateInitialViewController() as! SearchViewController
+        _ = sut.view
+        
+        XCTAssertNotNil(sut.resultsTableView, "table view should not be nil")
+    }
+    
     func test_prepareEntered_ReturnsStringWithoutSpacesAndSpecChars() {
         
         let string1 = "born again"
