@@ -31,6 +31,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - IBActions
     @IBAction func searchTapped(_ sender: Any) {
+        // Dismiss keyboard
+        view.endEditing(true)
         
         if let typedText = searchTextField.text {
             let query = prepareEntered(string: typedText)
@@ -106,5 +108,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc func dismissModal() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }

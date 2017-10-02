@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="musearch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjR-2k-hmD">
-                                <rect key="frame" x="117.5" y="40" width="140" height="40"/>
+                                <rect key="frame" x="107.5" y="40" width="160" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="7q9-X9-Ukh"/>
+                                    <constraint firstAttribute="width" constant="160" id="7q9-X9-Ukh"/>
                                     <constraint firstAttribute="height" constant="40" id="E81-kf-AtR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter artist or song to search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-Cz-eWI">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter artist or song to search" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-Cz-eWI">
                                 <rect key="frame" x="20" y="100" width="335" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="jJ6-Eq-kvX"/>
