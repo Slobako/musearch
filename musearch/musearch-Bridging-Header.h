@@ -9,6 +9,6 @@
 #ifndef musearch_Bridging_Header_h
 #define musearch_Bridging_Header_h
 
-#import "SwaggerClient.h"
+#import "SwaggerClient.h" // Local pod for Musixmatch API
 
 #endif /* musearch_Bridging_Header_h */

@@ -1,15 +1,14 @@
 //
-//  musearchTests.swift
+//  SearchViewControllerTests.swift
 //  musearchTests
 //
-//  Created by Slobodan Kovrlija on 9/29/17.
+//  Created by Slobodan Kovrlija on 10/1/17.
 //  Copyright © 2017 Slobodan Kovrlija. All rights reserved.
 //
 
 import XCTest
-@testable import musearch
 
-class musearchTests: XCTestCase {
+class SearchViewControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,6 +20,8 @@ class musearchTests: XCTestCase {
         super.tearDown()
     }
     
-
+    func test_prepareEntered_ReturnsStringWithoutSpacesAndQuotes {
+        
+    }
     
 }

@@ -33,17 +33,30 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func searchTapped(_ sender: Any) {
         
         if let typedText = searchTextField.text {
-            searchService.searchMusicFor(query: typedText, completion: { [unowned self] (arrayOfResults) in
+            let query = prepareEntered(string: typedText)
+            
+            searchService.searchMusicFor(query: query, completion: { [unowned self] (arrayOfResults) in
                 self.arrayOfResults = arrayOfResults
                 // Reload table view on the main thread
                 DispatchQueue.main.async(execute: {
                     self.resultsTableView.reloadData()
-                    let indexPath = IndexPath(row: 0, section: 0)
-                    self.resultsTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                    if arrayOfResults.count != 0 {
+                        let indexPath = IndexPath(row: 0, section: 0)
+                        self.resultsTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                    }
                     self.resultsTableView.isHidden = false
                 })
             })
         }
+    }
+    
+    func prepareEntered(string: String) -> String {
+        // Process search string by replacing spaces and characters not allowed in url
+        let stringWithoutSpaces = string.replacingOccurrences(of: " ", with: "+")
+        let charsNotAllowed = CharacterSet.urlPathAllowed.inverted
+        let allowedString = stringWithoutSpaces.components(separatedBy: charsNotAllowed).joined()
+        
+        return allowedString
     }
     
     // MARK: - Table View Delegate & Data Source

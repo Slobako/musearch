@@ -17,17 +17,12 @@ struct SearchService {
     ///
     /// - Returns an array of search result dictionaries in a completion block
     func searchMusicFor(query: String, completion: @escaping ([SearchResult]) -> Void) {
-
-        // Process search string by replacing spaces and weird quotes
-        let stringWithoutQuote = query.replacingOccurrences(of: "’", with: "") // !this is not a regular ' from keyboard!
-        let stringToSend = stringWithoutQuote.replacingOccurrences(of: " ", with: "+")
         
         // Build request URL
-        let urlString = "https://itunes.apple.com/search?term=" + stringToSend + "&resultentity=music"
-        let searchURL = NSURL.init(string: urlString)
-        
+        let urlString = "https://itunes.apple.com/search?term=" + query + "&resultentity=music"
+        guard let searchURL = NSURL.init(string: urlString) else { return }
         // Start URL Session data task
-        let task = URLSession.shared.dataTask(with: searchURL! as URL) { (data, urlResponse, error) in
+        let task = URLSession.shared.dataTask(with: searchURL as URL) { (data, urlResponse, error) in
             
             if urlResponse != nil {
                 do {
@@ -53,7 +48,6 @@ struct SearchService {
                 }
             }
         }
-        
         task.resume()
     }
     
